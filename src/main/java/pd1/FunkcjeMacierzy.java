@@ -1,7 +1,12 @@
 package pd1;
 
-public class FunkcjeMacierzy {
-    public void printMatrix(int[][] matrix) {
+public final class FunkcjeMacierzy {
+
+    private FunkcjeMacierzy() {
+
+    }
+
+    public static void printMatrix(int[][] matrix) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 System.out.print(matrix[i][j] + " ");
@@ -10,7 +15,7 @@ public class FunkcjeMacierzy {
         }
     }
 
-    public boolean symetricCheck(int[][] matrix) {
+    public static boolean isSymetric(int[][] matrix) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (matrix[i][j] != matrix[j][i]) {
