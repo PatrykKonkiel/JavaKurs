@@ -10,6 +10,6 @@ public class FoodProduct extends Product {
 
     @Override
     public String getDescription() {
-        return super.getDescription() + " " +"Data ważności: " + expiryDate;
+        return super.getDescription() + " Data ważności: " + expiryDate;
     }
 }

@@ -12,6 +12,6 @@ public class Product {
     }
 
     public String getDescription() {
-        return "Produkt: " + name + " " + "Cena: " + price + " zł ";
+        return "Produkt: " + name + " Cena: " + price + " zł ";
     }
 }
