@@ -6,10 +6,10 @@ public interface PaymentProcessor {
 
     default Transaction processPayment(BigDecimal amount) {
         System.out.println("Płatność na kwotę: " + amount + " zł");
-            System.out.println("Tranzakcja zakończona powodzeniem");
-            System.out.println("Opłata serwisowa wynosi: " + getTransactionFee(amount) + " zł");
-            System.out.println();
-            return Transaction.ofComplete(amount, getName());
+        System.out.println("Tranzakcja zakończona powodzeniem");
+        System.out.println("Opłata serwisowa wynosi: " + getTransactionFee(amount) + " zł");
+        System.out.println();
+        return Transaction.ofComplete(amount, getName());
     }
 
     default Transaction refund(BigDecimal amount) {

@@ -49,9 +49,15 @@ public class PaymentGateway {
         }
     }
 
+    public BigDecimal totalAmount(BigDecimal amount) {
+        PaymentProcessor processor = findBestProcessor(amount);
+        BigDecimal total = processor.getTransactionFee(amount).add(amount);
+        return total;
+    }
+
     public void amountValidator(BigDecimal amount) {
         if (amount.compareTo(BigDecimal.ZERO) <= 0) {
-            throw new IllegalArgumentException("Kwota nie może być na minusie");
+            throw new IllegalArgumentException("Kwota nie może być na minusie lub wynosić 0");
         }
     }
 

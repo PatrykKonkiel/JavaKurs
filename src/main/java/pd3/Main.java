@@ -27,7 +27,7 @@ public class Main {
                 case 0 -> {
                     System.out.println("Proszę wprowadzić kwotę do przelania");
                     BigDecimal amount = sc.nextBigDecimal();
-                    balance = balance.subtract(amount);
+                    balance = balance.subtract(gateway.totalAmount(amount));
                     gateway.balanceValidator(balance);
                     gateway.processPayment(amount);
 
