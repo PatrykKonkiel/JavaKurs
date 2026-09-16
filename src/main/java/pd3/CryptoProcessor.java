@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class CryptoProcessor implements PaymentProcessor {
 
-    private final BigDecimal PROCESS_FEE = BigDecimal.valueOf(0.03);
+    private static final BigDecimal PROCESS_FEE = BigDecimal.valueOf(0.03);
 
     @Override
     public BigDecimal getTransactionFee(BigDecimal amount) {

@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PaymentGateway {
-    private List<PaymentProcessor> processors;
-    private List<Transaction> paymentHistory;
+    private final List<PaymentProcessor> processors;
+    private final List<Transaction> paymentHistory;
 
     public PaymentGateway(List<PaymentProcessor> processors) {
         if (processors == null || processors.isEmpty()) {
@@ -51,8 +51,7 @@ public class PaymentGateway {
 
     public BigDecimal totalAmount(BigDecimal amount) {
         PaymentProcessor processor = findBestProcessor(amount);
-        BigDecimal total = processor.getTransactionFee(amount).add(amount);
-        return total;
+        return processor.getTransactionFee(amount).add(amount);
     }
 
     public void amountValidator(BigDecimal amount) {

@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class CreditCardProcessor implements PaymentProcessor {
 
-    private final BigDecimal PROCESS_FEE = BigDecimal.valueOf(0.01);
+    private static final BigDecimal PROCESS_FEE = BigDecimal.valueOf(0.01);
 
     @Override
     public BigDecimal getTransactionFee(BigDecimal amount) {

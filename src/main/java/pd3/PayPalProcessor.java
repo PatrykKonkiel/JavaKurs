@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class PayPalProcessor implements PaymentProcessor {
 
-    private final BigDecimal PROCESS_FEE = BigDecimal.valueOf(0.015);
+    private static final BigDecimal PROCESS_FEE = BigDecimal.valueOf(0.015);
 
     @Override
     public BigDecimal getTransactionFee(BigDecimal amount) {
