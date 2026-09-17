@@ -23,13 +23,14 @@ public class PaymentGateway {
                 bestProcessor = processor;
             }
         }
-        System.out.println("Wybrany procesor płatności to " + bestProcessor.getName());
         return bestProcessor;
     }
 
     public void processPayment(BigDecimal amount) {
         amountValidator(amount);
         PaymentProcessor processor = findBestProcessor(amount);
+        System.out.println("Wybrany procesor płatności to " + processor.getName());
+
         paymentHistory.add(processor.processPayment(amount));
 
 
@@ -38,6 +39,7 @@ public class PaymentGateway {
     public void refund(BigDecimal amount) {
         amountValidator(amount);
         PaymentProcessor processor = findBestProcessor(amount);
+        System.out.println("Wybrany procesor płatności to " + processor.getName());
         paymentHistory.add(processor.refund(amount));
 
     }
