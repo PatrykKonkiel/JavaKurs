@@ -12,8 +12,8 @@ public final class Motorbike extends RentalAsset {
     }
 
     @Override
-    public BigDecimal rentalCost(int dayNumber) {
-        return getBasePrice().multiply(BigDecimal.valueOf(dayNumber));
+    public BigDecimal additionalCharge() {
+        return super.additionalCharge();
     }
 
     @Override

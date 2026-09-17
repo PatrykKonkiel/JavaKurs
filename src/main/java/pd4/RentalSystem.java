@@ -8,9 +8,12 @@ import java.util.List;
 public class RentalSystem {
 
     private final List<Rent> rent;
-
-    public RentalSystem() {
+//  Static factory methods
+    private RentalSystem() {
         this.rent = new ArrayList<>();
+    }
+    public static RentalSystem inicialize(){
+        return new RentalSystem();
     }
 
     public void addRent(Rent rent) {
@@ -21,7 +24,7 @@ public class RentalSystem {
         BigDecimal sum = BigDecimal.ZERO;
 
         for (Rent rent : this.rent) {
-            sum = sum.add(rent.rentalPrice());
+            sum = sum.add(rent.rentalCost());
         }
         return sum;
     }
@@ -36,14 +39,16 @@ public class RentalSystem {
         return count;
     }
 
+
     public List<Rent> getRent() {
         return this.rent.stream().sorted().toList();
     }
 
     public List<Rent> sortByName() {
-        return this.rent.stream().sorted(Comparator.comparing(r -> r.getRentalAsset()
+        return this.rent.stream().sorted(Comparator.comparing(rent -> rent.getRentalAsset()
                 .getName())).toList();
 
     }
+
 
 }

@@ -1,41 +1,41 @@
 package pd4;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        RentalAsset bike1 = new Bike(1, AssetType.BIKE, BigDecimal.valueOf(10), "SkładakDelux", true);
-        RentalAsset bike2 = new Bike(12, AssetType.BIKE, BigDecimal.valueOf(5), "Jakiś rower", false);
-        RentalAsset bike3 = new Bike(15, AssetType.BIKE, BigDecimal.valueOf(15), "SkładakKlasyczny", false);
-        RentalAsset motorbike1 = new Motorbike(6, AssetType.MOTORBIKE, BigDecimal.valueOf(8), "ElMotoro", "Honda");
-        RentalAsset motorbike2 = new Motorbike(61, AssetType.MOTORBIKE, BigDecimal.valueOf(4), "BleBle", "Cosiek");
-        RentalAsset motorbike3 = new Motorbike(65, AssetType.MOTORBIKE, BigDecimal.valueOf(11), "Wariacik", "Honda");
-        Rent rent1 = new Rent(bike1, 10, RentalStatus.ACTIVE);
-        Rent rent2 = new Rent(bike2, 5, RentalStatus.RETURNED);
-        Rent rent3 = new Rent(bike3, 8, RentalStatus.RETURNED);
-        Rent rent4 = new Rent(motorbike1, 8, RentalStatus.ACTIVE);
-        Rent rent5 = new Rent(motorbike2, 2, RentalStatus.RETURNED);
-        Rent rent6 = new Rent(motorbike3, 5, RentalStatus.ACTIVE);
-        RentalSystem system = new RentalSystem();
-        system.addRent(rent1);
-        system.addRent(rent2);
-        system.addRent(rent3);
-        system.addRent(rent4);
-        system.addRent(rent5);
-        system.addRent(rent6);
+        List<RentalAsset> assets = List.of(
+                new Bike(1, AssetType.BIKE, BigDecimal.valueOf(10), "SkładakDelux", true),
+                new Bike(12, AssetType.BIKE, BigDecimal.valueOf(5), "Jakiś rower", false),
+                new Bike(15, AssetType.BIKE, BigDecimal.valueOf(15), "SkładakKlasyczny", false),
+                new Motorbike(6, AssetType.MOTORBIKE, BigDecimal.valueOf(8), "ElMotoro", "Honda"),
+                new Motorbike(61, AssetType.MOTORBIKE, BigDecimal.valueOf(4), "BleBle", "Cosiek"),
+                new Motorbike(65, AssetType.MOTORBIKE, BigDecimal.valueOf(11), "Wariacik", "Honda"));
+
+        List<Rent> rents = List.of(
+                new Rent(assets.get(0), 10, RentalStatus.ACTIVE),
+                new Rent(assets.get(1), 5, RentalStatus.RETURNED),
+                new Rent(assets.get(2), 8, RentalStatus.RETURNED),
+                new Rent(assets.get(3), 8, RentalStatus.ACTIVE),
+                new Rent(assets.get(4), 2, RentalStatus.RETURNED),
+                new Rent(assets.get(5), 5, RentalStatus.ACTIVE));
+
+        RentalSystem system = RentalSystem.inicialize();
+        rents.forEach(system::addRent);
 
 
         System.out.println("Wypożyczenia: ");
-        for(Rent rent : system.getRent()){
+        for (Rent rent : system.getRent()) {
             System.out.println(rent);
         }
 
-        System.out.println("Łączny koszt: " +system.totalCost() + " zł");
+        System.out.println("Łączny koszt: " + system.totalCost() + " zł");
 
-        System.out.println("Ilość aktywnych wypożyczeń: "+ system.countRentalStatusOf(RentalStatus.ACTIVE));
+        System.out.println("Ilość aktywnych wypożyczeń: " + system.countRentalStatusOf(RentalStatus.ACTIVE));
 
-        System.out.println("Posortowanie po cenie: ");
-        for(Rent rent: system.sortByName()){
+        System.out.println("Posortowanie po nazwie: ");
+        for (Rent rent : system.sortByName()) {
             System.out.println(rent);
         }
 

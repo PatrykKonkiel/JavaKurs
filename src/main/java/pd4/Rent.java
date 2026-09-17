@@ -30,8 +30,8 @@ public class Rent implements Comparable<Rent>{
         this.status = status;
     }
 
-    public BigDecimal rentalPrice() {
-        return this.rentalAsset.rentalCost(this.dayNumber);
+    public BigDecimal rentalCost(){
+        return (this.rentalAsset.getBasePrice().add(rentalAsset.additionalCharge())).multiply(BigDecimal.valueOf(dayNumber));
     }
 
     @Override
@@ -39,12 +39,14 @@ public class Rent implements Comparable<Rent>{
         return "Wypożyczenie " + this.rentalAsset
                 + " Ilość dni: " + this.dayNumber
                 + " Status wypożyczenia: " + this.status
-                + " Łączny koszt usługi: " + this.rentalPrice() + " zł";
+                + " Łączny koszt usługi: " + this.rentalCost() + " zł";
 
     }
 
     @Override
     public int compareTo(Rent o) {
-        return this.rentalAsset.getBasePrice().compareTo(o.rentalAsset.getBasePrice());
+        return this.rentalAsset.getBasePrice().add(rentalAsset.additionalCharge())
+                .compareTo(o.rentalAsset.getBasePrice().add(o.rentalAsset.additionalCharge()));
+
     }
 }

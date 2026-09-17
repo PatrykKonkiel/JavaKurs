@@ -10,18 +10,13 @@ public final class Bike extends RentalAsset {
         super(id, assetType, basePrice, name);
         this.electric = electric;
     }
-
+    @Override
     public BigDecimal additionalCharge() {
         if (electric) {
             return BigDecimal.valueOf(5);
         } else {
             return BigDecimal.ZERO;
         }
-    }
-
-    @Override
-    public BigDecimal rentalCost(int dayNumber) {
-        return (getBasePrice().add(additionalCharge())).multiply(BigDecimal.valueOf(dayNumber));
     }
 
     @Override
