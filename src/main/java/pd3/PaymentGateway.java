@@ -18,17 +18,21 @@ public class PaymentGateway {
 
     public PaymentProcessor findBestProcessor(BigDecimal amount) {
         PaymentProcessor bestProcessor = processors.get(0);
+        BigDecimal bestFee = bestProcessor.getTransactionFee(amount);
         for (PaymentProcessor processor : processors) {
-            if (processor.getTransactionFee(amount).compareTo(bestProcessor.getTransactionFee(amount)) < 0) {
+            BigDecimal fee = processor.getTransactionFee(amount);
+            if (fee.compareTo(bestFee) < 0) {
                 bestProcessor = processor;
+                bestFee = fee;
             }
         }
         return bestProcessor;
     }
 
-    public void processPayment(BigDecimal amount) {
-        amountValidator(amount);
-        PaymentProcessor processor = findBestProcessor(amount);
+    public void processPayment(BigDecimal amount, PaymentProcessor processor, BigDecimal fee) {
+
+        amountValidator(amount, fee);
+
         System.out.println("Wybrany procesor płatności to " + processor.getName());
 
         paymentHistory.add(processor.processPayment(amount));
@@ -36,9 +40,7 @@ public class PaymentGateway {
 
     }
 
-    public void refund(BigDecimal amount) {
-        amountValidator(amount);
-        PaymentProcessor processor = findBestProcessor(amount);
+    public void refund(BigDecimal amount, PaymentProcessor processor) {
         System.out.println("Wybrany procesor płatności to " + processor.getName());
         paymentHistory.add(processor.refund(amount));
 
@@ -51,13 +53,12 @@ public class PaymentGateway {
         }
     }
 
-    public BigDecimal totalAmount(BigDecimal amount) {
-        PaymentProcessor processor = findBestProcessor(amount);
-        return processor.getTransactionFee(amount).add(amount);
+    public BigDecimal calculateTotalAmount(BigDecimal amount, BigDecimal fee) {
+        return amount.add(fee);
     }
 
-    public void amountValidator(BigDecimal amount) {
-        if (amount.compareTo(BigDecimal.ZERO) <= 0) {
+    public void amountValidator(BigDecimal amount, BigDecimal fee) {
+        if (calculateTotalAmount(amount, fee).compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException("Kwota nie może być na minusie lub wynosić 0");
         }
     }

@@ -4,11 +4,11 @@ import java.math.BigDecimal;
 
 public class CryptoProcessor implements PaymentProcessor {
 
-    private static final BigDecimal PROCESS_FEE = BigDecimal.valueOf(0.03);
+    private static final BigDecimal PROCESS_FEE = BigDecimal.valueOf(11);
 
     @Override
     public BigDecimal getTransactionFee(BigDecimal amount) {
-        return amount.multiply(PROCESS_FEE);
+        return PROCESS_FEE;
     }
 
     @Override

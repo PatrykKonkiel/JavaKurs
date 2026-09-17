@@ -4,6 +4,10 @@ import java.math.BigDecimal;
 
 public interface PaymentProcessor {
 
+    BigDecimal getTransactionFee(BigDecimal amount);
+
+    String getName();
+
     default Transaction processPayment(BigDecimal amount) {
         System.out.println("Płatność na kwotę: " + amount + " zł");
         System.out.println("Tranzakcja zakończona powodzeniem");
@@ -17,8 +21,4 @@ public interface PaymentProcessor {
         System.out.println();
         return Transaction.ofRefund(amount, getName());
     }
-
-    BigDecimal getTransactionFee(BigDecimal amount);
-
-    String getName();
 }
