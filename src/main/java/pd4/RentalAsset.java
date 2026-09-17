@@ -38,7 +38,8 @@ public abstract sealed class RentalAsset permits Bike, Motorbike {
     public AssetType getAssetType() {
         return assetType;
     }
-    public BigDecimal additionalCharge(){
+
+    public BigDecimal additionalCharge() {
         return BigDecimal.ZERO;
     }
 
@@ -46,7 +47,7 @@ public abstract sealed class RentalAsset permits Bike, Motorbike {
     public String toString() {
         return "id: " + id +
                 " Nazwa: '" + name + '\'' +
-                " Cena wypożyczenia za dzień: " + basePrice.add(additionalCharge()) +"zł " +
+                " Cena wypożyczenia za dzień: " + basePrice.add(additionalCharge()) + "zł " +
                 " Typ zasobu: " + assetType;
 
     }

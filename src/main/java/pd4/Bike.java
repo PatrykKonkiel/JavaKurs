@@ -10,6 +10,7 @@ public final class Bike extends RentalAsset {
         super(id, assetType, basePrice, name);
         this.electric = electric;
     }
+
     @Override
     public BigDecimal additionalCharge() {
         if (electric) {

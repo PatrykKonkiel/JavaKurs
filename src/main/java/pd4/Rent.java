@@ -2,7 +2,7 @@ package pd4;
 
 import java.math.BigDecimal;
 
-public class Rent implements Comparable<Rent>{
+public class Rent implements Comparable<Rent> {
 
     private final RentalAsset rentalAsset;
     private final int dayNumber;
@@ -30,7 +30,7 @@ public class Rent implements Comparable<Rent>{
         this.status = status;
     }
 
-    public BigDecimal rentalCost(){
+    public BigDecimal rentalCost() {
         return (this.rentalAsset.getBasePrice().add(rentalAsset.additionalCharge())).multiply(BigDecimal.valueOf(dayNumber));
     }
 

@@ -8,11 +8,13 @@ import java.util.List;
 public class RentalSystem {
 
     private final List<Rent> rent;
-//  Static factory methods
+
+    //  Static factory methods
     private RentalSystem() {
         this.rent = new ArrayList<>();
     }
-    public static RentalSystem inicialize(){
+
+    public static RentalSystem inicialize() {
         return new RentalSystem();
     }
 
