@@ -31,7 +31,10 @@ public class Main {
                     BigDecimal fee = processor.getTransactionFee(amount);
                     BigDecimal totalAmount = gateway.calculateTotalAmount(amount, fee);
                     BigDecimal newBalance = balance.subtract(totalAmount);
-                    gateway.balanceValidator(newBalance);
+                    if (newBalance.compareTo(BigDecimal.ZERO) < 0) {
+                        throw new IllegalArgumentException("Kowta przekracza saldo konta");
+                    }
+
                     gateway.processPayment(amount, processor, fee);
                     balance = newBalance;
                 }

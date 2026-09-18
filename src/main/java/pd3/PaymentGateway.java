@@ -62,12 +62,4 @@ public class PaymentGateway {
             throw new IllegalArgumentException("Kwota nie może być na minusie lub wynosić 0");
         }
     }
-
-    public void balanceValidator(BigDecimal balance) {
-        if (balance.compareTo(BigDecimal.ZERO) < 0) {
-            throw new IllegalArgumentException("Kwota przelewu przekracza saldo konta");
-        }
-    }
-
-
 }
