@@ -1,17 +1,15 @@
 package pd3;
 
-import java.math.BigDecimal;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
+import java.math.BigDecimal;
+@Getter
+@AllArgsConstructor
 public class Transaction {
     private final BigDecimal amount;
     private final String paymentProcessor;
     private PaymentStatus status;
-
-    public Transaction(BigDecimal amount, String paymentProcessor, PaymentStatus status) {
-        this.amount = amount;
-        this.paymentProcessor = paymentProcessor;
-        this.status = status;
-    }
 
     public static Transaction ofComplete(BigDecimal amount, String paymentProcessor) {
         return new Transaction(amount, paymentProcessor, PaymentStatus.COMPLETED);
