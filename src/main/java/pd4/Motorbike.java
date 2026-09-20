@@ -1,7 +1,8 @@
 package pd4;
 
-import java.math.BigDecimal;
+import lombok.AllArgsConstructor;
 
+import java.math.BigDecimal;
 public final class Motorbike extends RentalAsset {
 
     private String brand;

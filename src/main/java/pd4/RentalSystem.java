@@ -1,20 +1,19 @@
 package pd4;
 
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-
 public class RentalSystem {
 
     private final List<Rent> rent;
 
-    //  Static factory methods
     private RentalSystem() {
         this.rent = new ArrayList<>();
     }
 
-    public static RentalSystem inicialize() {
+    public static RentalSystem initialize() {
         return new RentalSystem();
     }
 

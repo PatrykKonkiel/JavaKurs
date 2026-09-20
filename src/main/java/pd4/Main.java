@@ -21,7 +21,7 @@ public class Main {
                 new Rent(assets.get(4), 2, RentalStatus.RETURNED),
                 new Rent(assets.get(5), 5, RentalStatus.ACTIVE));
 
-        RentalSystem system = RentalSystem.inicialize();
+        RentalSystem system = RentalSystem.initialize();
         rents.forEach(system::addRent);
 
 
