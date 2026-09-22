@@ -1,8 +1,8 @@
 package pd4;
 
-import lombok.AllArgsConstructor;
 
 import java.math.BigDecimal;
+
 public final class Motorbike extends RentalAsset {
 
     private String brand;
@@ -10,11 +10,6 @@ public final class Motorbike extends RentalAsset {
     public Motorbike(int id, AssetType assetType, BigDecimal basePrice, String name, String brand) {
         super(id, assetType, basePrice, name);
         this.brand = brand;
-    }
-
-    @Override
-    public BigDecimal additionalCharge() {
-        return super.additionalCharge();
     }
 
     @Override
