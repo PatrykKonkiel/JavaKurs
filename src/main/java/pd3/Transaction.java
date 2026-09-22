@@ -1,11 +1,13 @@
 package pd3;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.math.BigDecimal;
+
 @Getter
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Transaction {
     private final BigDecimal amount;
     private final String paymentProcessor;
