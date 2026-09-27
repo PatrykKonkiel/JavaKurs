@@ -21,7 +21,7 @@ public class OperationResult<T> {
 
     public static <T> OperationResult<T> success(T value) {
         if (value == null) {
-            throw new IllegalArgumentException("Operacja się nie powiodłą");
+            throw new IllegalArgumentException("Wartość nie może być nullem");
         } else {
             return new OperationResult<>(true, value, "Operacja zakończona sukcesem");
         }
