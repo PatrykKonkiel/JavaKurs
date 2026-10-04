@@ -1,10 +1,14 @@
 package pd6;
 
-import java.util.List;
+import pd6.match.MatchResult;
+import pd6.match.Tournament;
+import pd6.participant.Participant;
+import pd6.participant.Player;
+import pd6.participant.Team;
 
 public class Main {
     public static void main(String[] args) {
-        Tournament tournament = new Tournament(new PointSystem<>());
+        Tournament tournament = Tournament.of();
         Participant janek = new Player("Janek");
         Participant marcin = new Player("Marcin");
         Participant legia = new Team("Legia");
@@ -12,11 +16,11 @@ public class Main {
         tournament.add(janek);
         tournament.add(legia);
 
-        tournament.play(janek, marcin, MatchResult.ONE_WIN);
-        tournament.play(janek, marcin, MatchResult.ONE_WIN);
-        tournament.play(janek, marcin, MatchResult.ONE_WIN);
-        tournament.play(janek, marcin, MatchResult.TWO_WIN);
-        tournament.play(janek, marcin, MatchResult.TWO_WIN);
+        tournament.play(janek, marcin, MatchResult.FIRST_WIN);
+        tournament.play(janek, marcin, MatchResult.FIRST_WIN);
+        tournament.play(janek, marcin, MatchResult.FIRST_WIN);
+        tournament.play(janek, marcin, MatchResult.SECOND_WIN);
+        tournament.play(janek, marcin, MatchResult.SECOND_WIN);
         tournament.play(janek, marcin, MatchResult.DRAW);
         tournament.play(legia, marcin, MatchResult.DRAW);
         tournament.printMatches();

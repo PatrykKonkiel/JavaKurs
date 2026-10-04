@@ -1,18 +1,17 @@
-package pd6;
+package pd6.match;
 
-import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import pd6.participant.Participant;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-@AllArgsConstructor
+@NoArgsConstructor(staticName = "of")
 public class Tournament {
 
     private final List<Participant> participants = new ArrayList<>();
     private final List<Match> matches = new ArrayList<>();
-
-    private final PointSystem pointSystem;
 
     public void add(Participant participant) {
         participants.add(participant);
@@ -21,7 +20,7 @@ public class Tournament {
     public void play(Participant one, Participant two, MatchResult result) {
         Match match = Match.played(one, two, result);
         matches.add(match);
-        pointSystem.apply(match);
+        PointApplier.apply(match);
     }
 
     public List<Participant> standings() {

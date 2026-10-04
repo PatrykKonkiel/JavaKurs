@@ -1,7 +1,8 @@
-package pd6;
+package pd6.match;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import pd6.participant.Participant;
 
 @RequiredArgsConstructor
 @Getter

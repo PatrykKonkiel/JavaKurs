@@ -1,4 +1,4 @@
-package pd6;
+package pd6.participant;
 
 public final class Player extends Participant {
 

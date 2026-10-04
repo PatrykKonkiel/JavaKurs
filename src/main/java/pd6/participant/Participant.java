@@ -1,5 +1,8 @@
-package pd6;
+package pd6.participant;
 
+import lombok.Getter;
+
+@Getter
 public abstract class Participant {
     public final String name;
     public int points;
@@ -12,19 +15,10 @@ public abstract class Participant {
         this.points = 0;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getPoints() {
-        return points;
-    }
-
     public void addPoints(int points) {
         if (points < 0) {
             throw new IllegalArgumentException("Points cannot be negative");
         }
         this.points += points;
     }
-
 }
