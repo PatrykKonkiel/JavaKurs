@@ -1,4 +1,4 @@
-package pd5;
+package pd5.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,5 +1,10 @@
 package pd5;
 
+import pd5.entity.EntityStorage;
+import pd5.entity.Product;
+import pd5.entity.User;
+import pd5.service.UserService;
+
 public class Main {
     public static void main(String[] args) {
         EntityStorage<Long, User> userStorage = new EntityStorage<>();

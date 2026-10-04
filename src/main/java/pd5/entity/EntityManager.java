@@ -1,4 +1,4 @@
-package pd5;
+package pd5.entity;
 
 import java.util.List;
 import java.util.Optional;

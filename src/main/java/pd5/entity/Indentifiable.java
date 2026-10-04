@@ -1,4 +1,4 @@
-package pd5;
+package pd5.entity;
 
 public interface Indentifiable<ID> {
     ID getId();
