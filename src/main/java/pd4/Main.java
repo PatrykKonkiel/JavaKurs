@@ -1,5 +1,13 @@
 package pd4;
 
+import pd4.asset.AssetType;
+import pd4.asset.Bike;
+import pd4.asset.Motorbike;
+import pd4.asset.RentalAsset;
+import pd4.rent.Rent;
+import pd4.rent.RentalStatus;
+import pd4.rent.RentalSystem;
+
 import java.math.BigDecimal;
 import java.util.List;
 

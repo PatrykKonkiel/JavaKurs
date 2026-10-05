@@ -1,4 +1,4 @@
-package pd4;
+package pd4.asset;
 
 public enum AssetType {
     BIKE,

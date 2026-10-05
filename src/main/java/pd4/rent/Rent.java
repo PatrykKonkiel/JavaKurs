@@ -1,8 +1,9 @@
-package pd4;
+package pd4.rent;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import pd4.asset.RentalAsset;
 
 import java.math.BigDecimal;
 @AllArgsConstructor
