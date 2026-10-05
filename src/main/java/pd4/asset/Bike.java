@@ -1,6 +1,4 @@
-package pd4;
-
-import lombok.AllArgsConstructor;
+package pd4.asset;
 
 import java.math.BigDecimal;
 
