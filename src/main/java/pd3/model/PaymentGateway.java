@@ -1,5 +1,7 @@
-package pd3;
+package pd3.model;
 
+
+import pd3.processor.PaymentProcessor;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

@@ -1,4 +1,6 @@
-package pd3;
+package pd3.processor;
+
+import pd3.model.Transaction;
 
 import java.math.BigDecimal;
 
