@@ -1,4 +1,4 @@
-package pd3;
+package pd3.model;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
