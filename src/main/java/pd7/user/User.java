@@ -1,4 +1,4 @@
-package pd7;
+package pd7.user;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

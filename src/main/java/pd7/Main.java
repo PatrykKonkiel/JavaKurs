@@ -12,7 +12,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         UserRegistrationService service = new UserRegistrationService();
-
         boolean running = true;
         while (running) {
             System.out.println("Options:");
@@ -20,9 +19,7 @@ public class Main {
             System.out.println("2 - Show database");
             System.out.println("3 - Close program");
             System.out.print("Chose your option: ");
-
             String choice = scanner.nextLine();
-
             switch (choice) {
                 case "1" -> {
                     try {
@@ -52,17 +49,13 @@ public class Main {
                         System.out.println(e.getMessage());
                     }
                 }
-
                 case "2" -> service.printDatabase();
-
                 case "3" -> {
                     System.out.println("Closing program");
                     running = false;
                 }
-
                 default -> System.out.println("Invalid option");
             }
         }
-
     }
 }
