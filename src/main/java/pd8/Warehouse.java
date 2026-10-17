@@ -1,18 +1,16 @@
 package pd8;
 
+import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
-
+@NoArgsConstructor(staticName = "inicialize")
 public class Warehouse {
     private Map<Long, Product> inventory = new HashMap<>();
     private Map<String, Set<Product>> byCategory = new HashMap<>();
     private PriorityQueue<Product> lowStock = new PriorityQueue<>();
     private static final int LOW_STOCK = 5;
-
-    public static Warehouse inicialize() {
-        return new Warehouse();
-    }
 
     public void addProduct(Product product) {
         if (inventory.containsKey(product.getId())) {
