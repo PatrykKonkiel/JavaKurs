@@ -58,7 +58,6 @@ public class ProductSorter {
                 .filter(product -> product.getPrice().compareTo(BigDecimal.valueOf(500)) < 0)
                 .sorted(Comparator.comparing(Product::getPrice))
                 .forEach(System.out::println);
-
     }
 
     public static void highestPriceProduct(List<Product> products) {
@@ -73,12 +72,11 @@ public class ProductSorter {
                         product -> product.getPrice().compareTo(BigDecimal.valueOf(1000)) > 0)
                 )
                 .forEach((key, value) -> {
-                    String group = key ? "Premium" : "Standard" + " products";
+                    String group = key ? "Premium" : "Standard";
                     System.out.println(group + " products");
                     value.forEach(System.out::println);
                     System.out.println(group + " count " + value.size());
                 });
-
     }
 
     public static void printReport(List<Product> products) {
@@ -91,7 +89,6 @@ public class ProductSorter {
                         )
                 ))
                 .forEach((category, product) -> System.out.println("Best product in " + category + ": " + product));
-
     }
 
 }
