@@ -24,6 +24,5 @@ public class Main {
         memoryRepository.findBy(TicketPredicates.byPriority(Priority.LOW));
         report.printReport();
         memoryRepository.printAll();
-
     }
 }
