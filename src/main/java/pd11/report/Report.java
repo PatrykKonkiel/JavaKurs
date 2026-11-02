@@ -2,41 +2,39 @@ package pd11.report;
 
 import lombok.AllArgsConstructor;
 import pd11.data.InMemoryRepository;
-import pd11.enums.Category;
 import pd11.enums.Priority;
 import pd11.enums.Status;
 import pd11.model.Employee;
 import pd11.model.Ticket;
 import pd11.service.TicketPredicates;
 
+
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 public class Report {
     private InMemoryRepository inMemoryRepository;
 
     private void countByStatus() {
-        for (Status status : Status.values()) {
-            long count = inMemoryRepository.getTickets().stream().filter(ticket -> ticket.getStatus() == status).count();
-            System.out.println(status + " " + count);
-        }
+        inMemoryRepository.getTickets().stream()
+                .collect(Collectors.groupingBy(Ticket::getStatus, Collectors.counting()))
+                .forEach(((status, count) -> System.out.println(status + " " + count)));
     }
 
     private void countByCategory() {
-        for (Category category : Category.values()) {
-            long count = inMemoryRepository.getTickets().stream().filter(ticket -> ticket.getCategory() == category).count();
-            System.out.println(category + " " + count);
+        inMemoryRepository.getTickets().stream()
+                .collect(Collectors.groupingBy(Ticket::getCategory, Collectors.counting()))
+                .forEach(((status, count) -> System.out.println(status + " " + count)));
         }
-    }
 
     private void countByPriority() {
-        for (Priority priority : Priority.values()) {
-            long count = inMemoryRepository.getTickets().stream().filter(ticket -> ticket.getPriority() == priority).count();
-            System.out.println(priority + " " + count);
-        }
+        inMemoryRepository.getTickets().stream()
+                .collect(Collectors.groupingBy(Ticket::getPriority, Collectors.counting()))
+                .forEach(((status, count) -> System.out.println(status + " " + count)));
     }
 
-   private void activeTicketsByEmployee() {
+    private void activeTicketsByEmployee() {
         for (Employee employee : inMemoryRepository.getEmployees()) {
             long count = inMemoryRepository.getTickets().stream()
                     .filter(ticket -> ticket.getEmployee() != null)
