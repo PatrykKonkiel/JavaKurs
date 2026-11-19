@@ -1,9 +1,10 @@
 package pd15.entity;
 
 import lombok.Getter;
-import pd15.exceptions.LoanLimitExceededException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
+
 @Getter
 public class Member {
     private Long id;
@@ -11,16 +12,16 @@ public class Member {
     private String email;
     private List<Loan> loans = new ArrayList<>();
 
-    public Member(Long id, String name, String email) {
-        this.id = id;
+    private static final AtomicLong counter = new AtomicLong(0);
+
+    public Member(String name, String email) {
         this.name = name;
         this.email = email;
+        id = counter.incrementAndGet();
     }
 
-    public void canBorrow() {
-        if (loans.size() > 3) {
-            throw new LoanLimitExceededException("Member exceeded limit of borrowed books");
-        }
+    public boolean canBorrow() {
+        return loans.size() <= 3;
     }
 
     public void addLoan(Loan loan){

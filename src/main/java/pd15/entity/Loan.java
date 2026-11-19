@@ -1,10 +1,10 @@
 package pd15.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.concurrent.atomic.AtomicLong;
+
 @Getter
 
 public class Loan {
@@ -15,13 +15,15 @@ public class Loan {
     private LocalDate dueDate;
     private LocalDate returnedAt;
 
-    public Loan(Long id, Book book, Member member, LocalDate borrowedAt, LocalDate dueDate) {
-        this.id = id;
+    private static final AtomicLong counter = new AtomicLong(0);
+
+    public Loan(Book book, Member member, LocalDate borrowedAt) {
         this.book = book;
         this.member = member;
         this.borrowedAt = borrowedAt;
-        this.dueDate = dueDate;
+        this.dueDate = borrowedAt.plusDays(14);
         this.returnedAt = null;
+        id = counter.incrementAndGet();
     }
 
     public boolean isOverdue() {
