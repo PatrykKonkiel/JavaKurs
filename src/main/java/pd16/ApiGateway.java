@@ -20,23 +20,19 @@ import java.util.concurrent.CompletableFuture;
 @RequiredArgsConstructor(staticName = "initialize")
 public class ApiGateway {
     ObjectMapper objectMapper = new ObjectMapper();
-
     public UserReport getUserReport(Long userId) throws IOException, InterruptedException {
         HttpClient client = HttpClient.newBuilder()
                 .connectTimeout(Duration.ofSeconds(5))
                 .version(HttpClient.Version.HTTP_2)
                 .build();
-
         HttpRequest getRequestUser = HttpRequest.newBuilder()
                 .uri(URI.create("https://jsonplaceholder.typicode.com/users/" + userId))
                 .header("Accept", "application/json")
                 .header("User-Agent", "Java HttpClient")
                 .GET()
                 .build();
-
         HttpResponse<String> getResponseUser = client.send(getRequestUser, HttpResponse.BodyHandlers.ofString());
         User user = objectMapper.readValue(getResponseUser.body(), User.class);
-
         HttpRequest getRequestUserTodos = HttpRequest.newBuilder()
                 .uri(URI.create("https://jsonplaceholder.typicode.com/users/" + userId + "/todos"))
                 .header("Accept", "application/json")
@@ -57,7 +53,6 @@ public class ApiGateway {
                 .header("User-Agent", "Java HttpClient")
                 .GET()
                 .build();
-
         CompletableFuture<HttpResponse<String>> getResponseTodos = client.sendAsync(getRequestUserTodos, HttpResponse.BodyHandlers.ofString());
         CompletableFuture<HttpResponse<String>> getResponsePosts = client.sendAsync(getRequestUserPosts, HttpResponse.BodyHandlers.ofString());
         CompletableFuture<HttpResponse<String>> getResponseWeather = client.sendAsync(getRequestUserWeather, HttpResponse.BodyHandlers.ofString());
@@ -71,7 +66,6 @@ public class ApiGateway {
             System.err.println("Weather Error" + ex.getMessage());
             return null;
         })).join();
-
         List<Posts> postsList = objectMapper.readValue(getResponsePosts.join().body(), new TypeReference<>() {
         });
         List<Todos> todosList = objectMapper.readValue(getResponseTodos.join().body(), new TypeReference<>() {
